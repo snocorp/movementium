@@ -153,9 +153,9 @@ var Formatter = function() {
 }();
 
 var Movementium = function (n, f) {
-    const MODE_VELOCITY = 'velocity', MODE_DISTANCE = 'distance', MODE_TIME = 'time';
-    const MODE_SPEED = 'speed', MODE_PACE = 'pace';
-    const UNIT_METER = 'meter', UNIT_KILOMETER = 'kilometer', UNIT_YARD = 'yard', UNIT_MILE = 'mile',
+    var MODE_VELOCITY = 'velocity', MODE_DISTANCE = 'distance', MODE_TIME = 'time';
+    var MODE_SPEED = 'speed', MODE_PACE = 'pace';
+    var UNIT_METER = 'meter', UNIT_KILOMETER = 'kilometer', UNIT_YARD = 'yard', UNIT_MILE = 'mile',
         UNIT_SECOND = 'second', UNIT_HMS = 'hms',
         UNIT_METERSPERSECOND = 'meterspersecond', UNIT_KPH = 'kph', UNIT_MPH = 'mph';
 
