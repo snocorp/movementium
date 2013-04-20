@@ -62,12 +62,12 @@
     "<fathom>" : [["fathom","fathoms"], 1.829, "length", ["<meter>"]],
     "<pica>"  : [["pica","picas"], 0.004217, "length", ["<meter>"]],
     "<point>" : [["pt","point","points"], 0.0003514, "length", ["<meter>"]],
-    "<redshift>" : [["z","red-shift"], 1.302773e26, "length", ["<meter>"]],
-    "<AU>"    : [["AU","astronomical-unit"], 149597900000, "length", ["<meter>"]],
-    "<light-second>":[["ls","light-second"], 299792500, "length", ["<meter>"]],
-    "<light-minute>":[["lmin","light-minute"], 17987550000, "length", ["<meter>"]],
-    "<light-year>" : [["ly","light-year"], 9460528000000000, "length", ["<meter>"]],
-    "<parsec>"  : [["pc","parsec","parsecs"], 30856780000000000, "length", ["<meter>"]],
+    //"<redshift>" : [["z","red-shift"], 1.302773e26, "length", ["<meter>"]],
+    //"<AU>"    : [["AU","astronomical-unit"], 149597900000, "length", ["<meter>"]],
+    //"<light-second>":[["ls","light-second"], 299792500, "length", ["<meter>"]],
+    //"<light-minute>":[["lmin","light-minute"], 17987550000, "length", ["<meter>"]],
+    //"<light-year>" : [["ly","light-year"], 9460528000000000, "length", ["<meter>"]],
+    //"<parsec>"  : [["pc","parsec","parsecs"], 30856780000000000, "length", ["<meter>"]],
 
     /* mass */
     "<kilogram>" : [["kg","kilogram","kilograms"], 1.0, "mass", ["<kilogram>"]],
