@@ -1,4 +1,4 @@
-var Normalizer = function () {
+var Normalizer = function Normalizer() {
 
     var matchToSeconds = function(match) {
         var h = typeof match[1] === 'undefined' ? 0 : parseInt(match[1],10);
@@ -138,7 +138,7 @@ var Normalizer = function () {
     };
 }();
 
-var Formatter = function() {
+var Formatter = function Formatter() {
     var formatSecondsAsHMMSS = function(seconds) {
         var h = Math.floor(seconds/3600);
         var m = Math.floor((seconds-h*3600)/60);
@@ -152,7 +152,7 @@ var Formatter = function() {
     };
 }();
 
-var Movementium = function (n, f) {
+var Movementium = function Movementium(n, f) {
     var MODE_VELOCITY = 'velocity', MODE_DISTANCE = 'distance', MODE_TIME = 'time';
     var MODE_SPEED = 'speed', MODE_PACE = 'pace';
     var UNIT_METER = 'meter', UNIT_KILOMETER = 'kilometer', UNIT_YARD = 'yard', UNIT_MILE = 'mile',
@@ -248,7 +248,7 @@ var Movementium = function (n, f) {
         if (menu.mode.css('display') === 'none') {
             $(document.body).addClass('left-menu-open');
 
-            setTimeout(function(){ container.content.on('click', toggleModeMenu) }, 10);
+            setTimeout(function(){ container.content.on('click', toggleModeMenu); }, 10);
 
             menu.mode.show();
         } else {
@@ -266,7 +266,7 @@ var Movementium = function (n, f) {
         if (menu.unit.css('display') === 'none') {
             $(document.body).addClass('right-menu-open');
 
-            setTimeout(function(){ container.content.on('click', toggleUnitMenu) }, 10);
+            setTimeout(function(){ container.content.on('click', toggleUnitMenu); }, 10);
 
             menu.unit.show();
         } else {
@@ -283,7 +283,7 @@ var Movementium = function (n, f) {
         var distance = n.normalizeDistance(input.distance.val());
         var time = n.normalizeTime(input.time.val());
 
-        if (velocity_mode == MODE_PACE) {
+        if (velocity_mode === MODE_PACE) {
             velocity = n.normalizePace(input.velocity.val());
 
             if (mode === MODE_VELOCITY) {
@@ -349,7 +349,7 @@ var Movementium = function (n, f) {
         }
 
         if (velocity !== null && velocity !== '') {
-            if (velocity_mode == MODE_PACE) {
+            if (velocity_mode === MODE_PACE) {
 
                 var postfix = '';
                 if (unit.pace === UNIT_METER) {
@@ -387,13 +387,57 @@ var Movementium = function (n, f) {
             input.time.val(time);
         }
 
-        normalized.velocity.text(velocity === null ? '' : velocity);
-        normalized.distance.text(distance === null ? '' : distance);
-        normalized.time.text(time === null ? '' : time);
+        normalized.velocity.text(velocity === null ? generateExample(MODE_VELOCITY) : velocity);
+        normalized.distance.text(distance === null ? generateExample(MODE_DISTANCE) : distance);
+        normalized.time.text(time === null ? generateExample(MODE_TIME) : time);
+    };
+    
+    var generateExample = function(example_mode) {
+        var example = '';
+        if (example_mode === MODE_VELOCITY) {
+            if (velocity_mode === MODE_PACE) {
+                var postfix = '';
+                if (unit.pace === UNIT_METER) {
+                    postfix = '/m';
+                } else if (unit.pace === UNIT_KILOMETER) {
+                    postfix = '/km';
+                } else if (unit.pace === UNIT_YARD) {
+                    postfix = '/yd';
+                } else if (unit.pace === UNIT_MILE) {
+                    postfix = '/mi';
+                }
+                
+                if (unit.time === UNIT_HMS) {
+                    example = '0:05:25'+postfix;
+                } else if (unit.time === UNIT_SECOND) {
+                    example = '625 s'+postfix;
+                }
+            } else { //MODE_SPEED
+                if (unit.speed === UNIT_METERSPERSECOND) {
+                    example = '3.3 m/s';
+                } else if (unit.speed === UNIT_KPH) {
+                    example = '12 km/h';
+                } else { //UNIT_MPH
+                    example = '7.5 mi/h';
+                }
+            }
+        } else if (example_mode === MODE_DISTANCE) {
+            if (unit.distance === UNIT_METER) {
+                example = '100 m';
+            } else if (unit.pace === UNIT_KILOMETER) {
+                example = '5 km';
+            } else if (unit.pace === UNIT_YARD) {
+                example = '100 yd';
+            } else if (unit.pace === UNIT_MILE) {
+                example = '13 mi';
+            }
+        }
+        
+        return 'e.g. ' + example;
     };
 
     var handleModeChange = function() {
-        if (velocity_mode == MODE_PACE) {
+        if (velocity_mode === MODE_PACE) {
             input.velocity = input.pace;
             normalized.velocity = normalized.pace;
             container.velocity = container.pace;
