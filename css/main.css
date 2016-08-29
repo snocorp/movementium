@@ -102,6 +102,14 @@ body.left-menu-open, body.right-menu-open {
     white-space: nowrap;
 }
 
+div.banner {
+  background-color: #ffca00;
+  font-weight: bold;
+  height: 40px;
+  padding-top: 17px;
+  text-align: center;
+}
+
 div.header {
     position: relative;
 }
